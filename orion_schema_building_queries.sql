@@ -75,6 +75,20 @@ ADD FOREIGN KEY (ï»¿Employee_ID) REFERENCES staff(ï»¿Employee_ID)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
+#Customer and Customer_orders relationship
+ALTER TABLE customer
+MODIFY Customer_Name VARCHAR(255);
+ALTER TABLE customer_orders
+MODIFY ï»¿Customer_Name VARCHAR(255);
+
+ALTER TABLE customer
+ADD INDEX idx_customer_name (Customer_Name);
+
+ALTER TABLE customer_orders
+ADD CONSTRAINT fk_customer_name
+FOREIGN KEY (ï»¿Customer_Name)
+REFERENCES customer(Customer_Name);
+
 
 #Order Fact Table: Primary key for order_fact is composite (Order_ID + Product_ID):
 ALTER TABLE order_fact
@@ -101,6 +115,8 @@ ALTER TABLE qtr2_2007
 ADD FOREIGN KEY (ï»¿Order_ID) REFERENCES order_fact(Order_ID)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
+
+
 
 
 
