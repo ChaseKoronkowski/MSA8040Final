@@ -8,7 +8,6 @@ SELECT
     a.Order_Date,
     a.Order_ID,
     b.Product_Category,
-    
     SUM(a.Total_Retail_Price) AS Total_Sales,
     SUM(a.CostPrice_Per_Unit * a.Quantity) AS Total_Cost,
     SUM(a.Total_Retail_Price) - SUM(a.CostPrice_Per_Unit * a.Quantity) AS Profit,
@@ -18,4 +17,4 @@ FROM
 JOIN product_dim AS b
 ON a.Product_ID = b.ï»¿Product_ID
 GROUP BY 
-    a.ï»¿Customer_ID,ï»¿Product_ID,Order_Date,a.Order_ID
+    a.ï»¿Customer_ID,ï»¿Product_ID,Order_Date,a.Order_ID;
